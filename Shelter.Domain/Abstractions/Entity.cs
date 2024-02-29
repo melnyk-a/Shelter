@@ -12,7 +12,7 @@ public abstract class Entity
 
     public IReadOnlyList<IDomainEvent> GetDomainEvents() => _domainEvents.ToList();
 
-    public void Clear() => _domainEvents.Clear();
+    public void ClearDomainEvents() => _domainEvents.Clear();
 
     protected void RaiseDomainEvent(IDomainEvent domainEvent)
     {

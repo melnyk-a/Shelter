@@ -2,5 +2,5 @@
 
 public interface IPetSitterRepository
 {
-    Task<PetSitter> GetByIdAsync(Guid id, CancellationToken cancellationToken = default);
+    Task<PetSitter?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default);
 }

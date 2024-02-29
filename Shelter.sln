@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shelter.Domain", "Shelter.D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shelter.Application", "Shelter.Application\Shelter.Application.csproj", "{9D80D762-4FAE-4D57-B50E-D7156AC0E962}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shelter.Infrastructure", "Shelter.Infrastructure\Shelter.Infrastructure.csproj", "{84CBD701-E94B-40AC-A0A5-4355E5941170}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{9D80D762-4FAE-4D57-B50E-D7156AC0E962}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9D80D762-4FAE-4D57-B50E-D7156AC0E962}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9D80D762-4FAE-4D57-B50E-D7156AC0E962}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84CBD701-E94B-40AC-A0A5-4355E5941170}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84CBD701-E94B-40AC-A0A5-4355E5941170}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84CBD701-E94B-40AC-A0A5-4355E5941170}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84CBD701-E94B-40AC-A0A5-4355E5941170}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -32,6 +38,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{4376103E-4F37-4F07-8D9C-83F4C0C4E1C7} = {A7126B04-9DD2-48B0-9832-5A71AC005C7E}
 		{9D80D762-4FAE-4D57-B50E-D7156AC0E962} = {A7126B04-9DD2-48B0-9832-5A71AC005C7E}
+		{84CBD701-E94B-40AC-A0A5-4355E5941170} = {A7126B04-9DD2-48B0-9832-5A71AC005C7E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E82B6CE5-A654-4798-96DB-89021A815238}
