@@ -4,7 +4,6 @@ public record DateRange
 {
     private DateRange()
     {
-
     }
 
     public DateOnly Start { get; init; }
