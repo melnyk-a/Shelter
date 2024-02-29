@@ -17,9 +17,9 @@ internal sealed class BookingReservedDomainEventHandler : INotificationHandler<B
         IUserRepository userRepository,
         IEmailService emailService)
     {
-        this._bookingRepository = bookingRepository;
-        this._userRepository = userRepository;
-        this._emailService = emailService;
+        _bookingRepository = bookingRepository;
+        _userRepository = userRepository;
+        _emailService = emailService;
     }
     public async Task Handle(BookingRejectedDomainEvent notification, CancellationToken cancellationToken)
     {
