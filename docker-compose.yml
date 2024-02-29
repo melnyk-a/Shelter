@@ -1,0 +1,26 @@
+version: '3.4'
+
+services:
+  shelter.api:
+    image: ${DOCKER_REGISTRY-}shelterapi
+    container_name: Shelter.Api
+    build:
+      context: .
+      dockerfile: src/Shelter.Api/Dockerfile
+    ports:
+      - "5000:5000"
+      - "5001:5001"
+    depends_on:
+      - shelter-db
+
+  shelter-db:
+    image: postgres:latest
+    container_name: Shelter.Db
+    environment:
+      - POSTGRES_DB=shelter
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - ./.containers/database:/var/lib/postgresql/data
+    ports:
+      - 5432:5432

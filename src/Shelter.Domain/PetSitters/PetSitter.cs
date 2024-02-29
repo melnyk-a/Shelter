@@ -25,6 +25,10 @@ public sealed class PetSitter : Entity
         AllowedPetTypes = petTypes;
     }
 
+    private PetSitter()
+    {
+    }
+
     public Name Name { get; private set; }
     public Description Description { get; private set; }
     public Address Address { get; private set; }
