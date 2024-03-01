@@ -1,9 +1,11 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Shelter.Application.PetSitters.SearchPetSitters;
 
 namespace Shelter.Api.Controllers.PetSitters;
 
+[Authorize]
 [ApiController]
 [Route("api/petsitters")]
 public class PetSittersController : ControllerBase

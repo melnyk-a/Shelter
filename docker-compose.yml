@@ -24,3 +24,16 @@ services:
       - ./.containers/database:/var/lib/postgresql/data
     ports:
       - 5432:5432
+
+  shelter-idp:
+    image: jboss/keycloak:latest
+    container_name: Shelter.Identity
+    environment:
+      - KEYCLOAK_USER=admin
+      - KEYCLOAK_PASSWORD=admin
+      - KEYCLOAK_IMPORT=/tmp/shelter-realm-export.json
+    volumes:
+      - ./.containers/identity:/opt/jboss/keycloak/standalone/data
+      - ./.files/shelter-realm-export.json:/tmp/shelter-realm-export.json
+    ports:
+      - 18080:8080

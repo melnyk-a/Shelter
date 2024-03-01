@@ -48,13 +48,13 @@ internal sealed class SearchPetSitterQueryHandler :
                 a.address_state AS State,
                 a.address_city AS City,
                 a.address_street AS Street
-            FROM apartments AS a
+            FROM pet_sitters AS a
             WHERE NOT EXISTS
             (
                 SELECT 1
                 FROM bookings AS b
                 WHERE
-                    b.apartment_id = a.id AND
+                    b.pet_sitter_id = a.id AND
                     b.duration_start <= @EndDate AND
                     b.duration_end >= @StartDate AND
                     b.status = ANY(@ActiveBookingStatuses)
