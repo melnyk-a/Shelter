@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -13,6 +14,7 @@ using Shelter.Domain.Bookings;
 using Shelter.Domain.PetSitters;
 using Shelter.Domain.Users;
 using Shelter.Infrastructure.Authentication;
+using Shelter.Infrastructure.Authorization;
 using Shelter.Infrastructure.Clock;
 using Shelter.Infrastructure.Data;
 using Shelter.Infrastructure.Email;
@@ -32,6 +34,8 @@ public static class DependencyInjection
         AddPersistance(services, configuration);
 
         AddAuthentication(services, configuration);
+
+        AddAuthorization(services);
 
         return services;
     }
@@ -62,8 +66,22 @@ public static class DependencyInjection
             var keycloakOption = serviceProvider.GetRequiredService<IOptions<KeycloakOptions>>().Value;
             httpClient.BaseAddress = new Uri(keycloakOption.TokenUrl);
         });
+
+        services.AddHttpContextAccessor();
+
+        services.AddScoped<IUserContext, UserContext>();
     }
 
+    private static void AddAuthorization(IServiceCollection services)
+    {
+        services.AddScoped<AuthorizationService>();
+
+        services.AddTransient<Microsoft.AspNetCore.Authentication.IClaimsTransformation, CustomClaimsTransformation>();
+
+        services.AddTransient<IAuthorizationHandler, PermissionAuthorizationHandler>();
+
+        services.AddTransient<IAuthorizationPolicyProvider, PermissionAuthorizationPolicyProvider>();
+    }
     private static void AddPersistance(IServiceCollection services, IConfiguration configuration)
     {
         var connectionString =

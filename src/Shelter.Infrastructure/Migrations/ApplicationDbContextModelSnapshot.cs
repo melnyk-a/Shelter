@@ -22,6 +22,25 @@ namespace Shelter.Infrastructure.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
+            modelBuilder.Entity("RoleUser", b =>
+                {
+                    b.Property<int>("RolesId")
+                        .HasColumnType("integer")
+                        .HasColumnName("roles_id");
+
+                    b.Property<Guid>("UsersId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("users_id");
+
+                    b.HasKey("RolesId", "UsersId")
+                        .HasName("pk_role_user");
+
+                    b.HasIndex("UsersId")
+                        .HasDatabaseName("ix_role_user_users_id");
+
+                    b.ToTable("role_user", (string)null);
+                });
+
             modelBuilder.Entity("Shelter.Domain.Bookings.Booking", b =>
                 {
                     b.Property<Guid>("Id")
@@ -162,6 +181,90 @@ namespace Shelter.Infrastructure.Migrations
                     b.ToTable("reviews", (string)null);
                 });
 
+            modelBuilder.Entity("Shelter.Domain.Users.Permission", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("name");
+
+                    b.Property<int?>("RoleId")
+                        .HasColumnType("integer")
+                        .HasColumnName("role_id");
+
+                    b.HasKey("Id")
+                        .HasName("pk_permissions");
+
+                    b.HasIndex("RoleId")
+                        .HasDatabaseName("ix_permissions_role_id");
+
+                    b.ToTable("permissions", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "users:read"
+                        });
+                });
+
+            modelBuilder.Entity("Shelter.Domain.Users.Role", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("name");
+
+                    b.HasKey("Id")
+                        .HasName("pk_roles");
+
+                    b.ToTable("roles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Registered"
+                        });
+                });
+
+            modelBuilder.Entity("Shelter.Domain.Users.RolePermission", b =>
+                {
+                    b.Property<int>("RoleId")
+                        .HasColumnType("integer")
+                        .HasColumnName("role_id");
+
+                    b.Property<int>("PermissionId")
+                        .HasColumnType("integer")
+                        .HasColumnName("permission_id");
+
+                    b.HasKey("RoleId", "PermissionId")
+                        .HasName("pk_role_permisions");
+
+                    b.ToTable("role_permisions", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            RoleId = 1,
+                            PermissionId = 1
+                        });
+                });
+
             modelBuilder.Entity("Shelter.Domain.Users.User", b =>
                 {
                     b.Property<Guid>("Id")
@@ -204,6 +307,23 @@ namespace Shelter.Infrastructure.Migrations
                         .HasDatabaseName("ix_users_identity_id");
 
                     b.ToTable("users", (string)null);
+                });
+
+            modelBuilder.Entity("RoleUser", b =>
+                {
+                    b.HasOne("Shelter.Domain.Users.Role", null)
+                        .WithMany()
+                        .HasForeignKey("RolesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_role_user_role_roles_id");
+
+                    b.HasOne("Shelter.Domain.Users.User", null)
+                        .WithMany()
+                        .HasForeignKey("UsersId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_role_user_user_users_id");
                 });
 
             modelBuilder.Entity("Shelter.Domain.Bookings.Booking", b =>
@@ -474,6 +594,19 @@ namespace Shelter.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("fk_reviews_user_user_id");
+                });
+
+            modelBuilder.Entity("Shelter.Domain.Users.Permission", b =>
+                {
+                    b.HasOne("Shelter.Domain.Users.Role", null)
+                        .WithMany("Permissions")
+                        .HasForeignKey("RoleId")
+                        .HasConstraintName("fk_permissions_role_role_id");
+                });
+
+            modelBuilder.Entity("Shelter.Domain.Users.Role", b =>
+                {
+                    b.Navigation("Permissions");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,10 +1,12 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Shelter.Application.Bookings.GetBooking;
 using Shelter.Application.Bookings.ReserveBooking;
 
 namespace Shelter.Api.Controllers.Bookings;
 
+[Authorize]
 [ApiController]
 [Route("api/bookings")]
 public class BookingsController : ControllerBase
@@ -16,7 +18,7 @@ public class BookingsController : ControllerBase
         _sender = sender;
     }
 
-    [HttpGet]
+    [HttpGet("id")]
     public async Task<IActionResult> GetBookings(
         Guid id,
         CancellationToken cancellationToken)

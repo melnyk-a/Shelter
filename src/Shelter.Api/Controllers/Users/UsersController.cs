@@ -1,8 +1,10 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Shelter.Application.Users.GetLoggedInUser;
 using Shelter.Application.Users.LoginUser;
 using Shelter.Application.Users.RegisterUser;
+using Shelter.Infrastructure.Authorization;
 
 namespace Shelter.Api.Controllers.Users;
 
@@ -15,6 +17,18 @@ public class UsersController : ControllerBase
     public UsersController(ISender sender)
     {
         _sender = sender;
+    }
+
+    [HttpGet("me")]
+    //[Authorize(Roles = Roles.Registered)]
+    [HasPermission(Permission.UsersRead)]
+    public async Task<IActionResult> GetLoggedInUser(CancellationToken cancellationToken)
+    {
+        var query = new GetLoggedInUserQuery();
+
+        var result = await _sender.Send(query, cancellationToken);
+
+        return Ok(result.Value);
     }
 
     [AllowAnonymous]
