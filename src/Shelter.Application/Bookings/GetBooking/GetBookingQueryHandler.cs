@@ -1,6 +1,6 @@
 ﻿using Dapper;
 using Shelter.Application.Abstractions.Authentication;
-using Shelter.Application.Abstractions.Data;
+using Shelter.Application.Abstractions.Persistence;
 using Shelter.Application.Abstractions.Messaging;
 using Shelter.Domain.Abstractions;
 using Shelter.Domain.Bookings;

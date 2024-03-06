@@ -5,7 +5,7 @@ using Shelter.Domain.Shared;
 
 namespace Shelter.Domain.Bookings;
 
-public sealed class Booking : Entity
+public sealed class Booking : AuditableEntity
 {
     private Booking(
         Guid id,

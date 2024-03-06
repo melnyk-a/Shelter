@@ -2,6 +2,7 @@
 using Shelter.Application.Abstractions.Messaging;
 using Shelter.Application.Exceptions;
 using Shelter.Domain.Abstractions;
+using Shelter.Domain.Abstractions.Persistence;
 using Shelter.Domain.Bookings;
 using Shelter.Domain.PetSitters;
 using Shelter.Domain.Users;

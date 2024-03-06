@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Shelter.Application.Users.GetLoggedInUser;
 using Shelter.Application.Users.LoginUser;
 using Shelter.Application.Users.RegisterUser;
-using Shelter.Infrastructure.Authorization;
+using Shelter.Auth.Keycloak.Authorization;
 
 namespace Shelter.Api.Controllers.Users;
 

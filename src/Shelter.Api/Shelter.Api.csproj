@@ -10,18 +10,20 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Bogus"/>
+    <PackageReference Include="Bogus" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets"/>
-    <PackageReference Include="Swashbuckle.AspNetCore"/>
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" />
+    <PackageReference Include="Swashbuckle.AspNetCore" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Shelter.Application\Shelter.Application.csproj" />
+    <ProjectReference Include="..\Shelter.Auth.Keycloak\Shelter.Auth.Keycloak.csproj" />
     <ProjectReference Include="..\Shelter.Infrastructure\Shelter.Infrastructure.csproj" />
+    <ProjectReference Include="..\Shelter.Persistence\Shelter.Persistence.csproj" />
   </ItemGroup>
 
 

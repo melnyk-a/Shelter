@@ -1,6 +1,7 @@
 ﻿using Shelter.Application.Abstractions.Authentication;
 using Shelter.Application.Abstractions.Messaging;
 using Shelter.Domain.Abstractions;
+using Shelter.Domain.Abstractions.Persistence;
 using Shelter.Domain.Users;
 
 namespace Shelter.Application.Users.RegisterUser;

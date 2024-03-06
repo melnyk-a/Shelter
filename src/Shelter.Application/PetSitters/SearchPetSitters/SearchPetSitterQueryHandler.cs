@@ -1,8 +1,9 @@
 ﻿using Dapper;
-using Shelter.Application.Abstractions.Data;
+using Shelter.Application.Abstractions.Persistence;
 using Shelter.Application.Abstractions.Messaging;
 using Shelter.Domain.Abstractions;
 using Shelter.Domain.Bookings;
+using Shelter.Application.PetSitters.Shared;
 
 namespace Shelter.Application.PetSitters.SearchPetSitters;
 

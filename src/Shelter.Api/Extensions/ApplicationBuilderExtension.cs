@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Shelter.Api.Middlewares;
-using Shelter.Infrastructure;
+using Shelter.Persistence;
 
 namespace Shelter.Api.Extensions;
 

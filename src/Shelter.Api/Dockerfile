@@ -11,6 +11,8 @@ COPY ["src/Shelter.Api/Shelter.Api.csproj", "src/Shelter.Api/"]
 COPY ["src/Shelter.Application/Shelter.Application.csproj", "src/Shelter.Application/"]
 COPY ["src/Shelter.Domain/Shelter.Domain.csproj", "src/Shelter.Domain/"]
 COPY ["src/Shelter.Infrastructure/Shelter.Infrastructure.csproj", "src/Shelter.Infrastructure/"]
+COPY ["src/Shelter.Persistence/Shelter.Persistence.csproj", "src/Shelter.Persistence/"]
+COPY ["src/Shelter.Auth.Keycloak/Shelter.Auth.Keycloak.csproj", "src/Shelter.Auth.Keycloak/"]
 RUN dotnet restore "./src/Shelter.Api/./Shelter.Api.csproj"
 COPY . .
 WORKDIR "/src/src/Shelter.Api"

@@ -1,9 +1,7 @@
-﻿using Shelter.Domain.PetSitters;
+﻿using Shelter.Domain.Abstractions.Persistence;
 
 namespace Shelter.Domain.Users;
 
-public interface IUserRepository
+public interface IUserRepository : IRepository<User>
 {
-    Task<User?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default);
-    void Add(User user);
 }

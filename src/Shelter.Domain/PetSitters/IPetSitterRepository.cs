@@ -1,6 +1,7 @@
-﻿namespace Shelter.Domain.PetSitters;
+﻿using Shelter.Domain.Abstractions.Persistence;
 
-public interface IPetSitterRepository
+namespace Shelter.Domain.PetSitters;
+
+public interface IPetSitterRepository: IRepository<PetSitter>
 {
-    Task<PetSitter?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default);
 }

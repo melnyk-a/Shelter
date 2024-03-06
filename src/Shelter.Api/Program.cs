@@ -1,6 +1,8 @@
 using Shelter.Api.Extensions;
 using Shelter.Application;
+using Shelter.Auth.Keycloak;
 using Shelter.Infrastructure;
+using Shelter.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,8 +11,10 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddApplication();
-builder.Services.AddInfrastructure(builder.Configuration);
+builder.Services.AddApplicationServices();
+builder.Services.AddPersistanceServices(builder.Configuration);
+builder.Services.AddInfrastructureServices(builder.Configuration);
+builder.Services.AddAuthKeycloackServices(builder.Configuration);
 
 var app = builder.Build();
 

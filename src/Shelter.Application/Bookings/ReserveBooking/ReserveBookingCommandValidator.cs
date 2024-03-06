@@ -10,6 +10,6 @@ public sealed class ReserveBookingCommandValidator: AbstractValidator<ReserveBoo
 
         RuleFor(c => c.PetSitterId).NotEmpty();
 
-        RuleFor(c => c.StartDate).LessThan(c =>  c.EndDate);
+        RuleFor(c => c.StartDate).LessThan(c => c.EndDate);
     }
 }

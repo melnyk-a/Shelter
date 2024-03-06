@@ -1,5 +1,5 @@
 ﻿using Bogus;
-using Shelter.Application.Abstractions.Data;
+using Shelter.Application.Abstractions.Persistence;
 using Shelter.Domain.PetSitters;
 using Dapper;
 

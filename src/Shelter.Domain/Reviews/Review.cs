@@ -4,7 +4,7 @@ using Shelter.Domain.Reviews.Events;
 
 namespace Shelter.Domain.Reviews;
 
-public sealed class Review : Entity
+public sealed class Review : AuditableEntity
 {
     private Review(
         Guid id,
@@ -61,5 +61,17 @@ public sealed class Review : Entity
         review.RaiseDomainEvent(new ReviewCreatedDomainEvent(review.Id));
 
         return review;
+    }
+
+    public Result<Review> Update(
+        Rating rating,
+        Comment comment)
+    {
+        Comment = comment;
+        Rating = rating;
+
+        RaiseDomainEvent(new ReviewUpdatedDomainEvent(Id));
+
+        return Result.Success(this);
     }
 }
