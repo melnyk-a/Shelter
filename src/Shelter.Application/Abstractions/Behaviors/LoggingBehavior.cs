@@ -1,16 +1,17 @@
 ﻿using MediatR;
 using Microsoft.Extensions.Logging;
-using Shelter.Application.Abstractions.Messaging;
+using Shelter.Domain.Abstractions;
 
 namespace Shelter.Application.Abstractions.Behaviors;
 
 public sealed class LoggingBehavior<TRequest, TResponse>
     : IPipelineBehavior<TRequest, TResponse>
-    where TRequest : IBaseCommand
+    where TRequest : IBaseRequest
+    where TResponse : Result
 {
-    private readonly ILogger<TRequest> _logger;
+    private readonly ILogger<LoggingBehavior<TRequest, TResponse>> _logger;
 
-    public LoggingBehavior(ILogger<TRequest> logger)
+    public LoggingBehavior(ILogger<LoggingBehavior<TRequest, TResponse>> logger)
     {
         _logger = logger;
     }
@@ -24,17 +25,26 @@ public sealed class LoggingBehavior<TRequest, TResponse>
 
         try
         {
-            _logger.LogInformation("Executing command {Command}", name);
+            _logger.LogInformation("Executing request {Request}", name);
 
             var result = await next();
 
-            _logger.LogInformation("Command {Command} processed successfully", name);
+            if (result.IsSuccess)
+            {
+                _logger.LogInformation("Request {Request} processed successfully", name);
+            }
+            else
+            {
+                _logger.LogError("Request {Request} was processed with error {Error}",
+                    name,
+                    result.Error);
+            }
 
             return result;
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Command {Command} processing failed", name);
+            _logger.LogError(ex, "Request {Request} processing failed", name);
             throw;
         }
     }

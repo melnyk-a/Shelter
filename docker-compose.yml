@@ -37,3 +37,12 @@ services:
       - ./.files/shelter-realm-export.json:/tmp/shelter-realm-export.json
     ports:
       - 18080:8080
+
+  shelter-seq:
+    image: datalust/seq:latest
+    container_name: Shelter.Seq
+    environment:
+      - ACCEPT_EULA=Y
+    ports:
+      - 5341:5341
+      - 8081:80
