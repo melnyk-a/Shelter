@@ -6,6 +6,7 @@ using Shelter.Application.Abstractions.Email;
 using Shelter.Infrastructure.Caching;
 using Shelter.Infrastructure.Clock;
 using Shelter.Infrastructure.Email;
+using Shelter.Infrastructure.HealthChecks;
 
 namespace Shelter.Infrastructure;
 
@@ -22,6 +23,8 @@ public static class DependencyInjection
 
         AddCaching(services, configuration);
 
+        AddHealthChecks(services, configuration);
+
         return services;
     }
 
@@ -33,5 +36,14 @@ public static class DependencyInjection
         services.AddStackExchangeRedisCache(options => options.Configuration = connection);
 
         services.AddSingleton<ICacheService, CacheService>();
+    }
+
+    private static void AddHealthChecks(IServiceCollection services, IConfiguration configuration)
+    {
+        services.AddHealthChecks()
+            .AddCheck<CustomSqlHealthCheck>("custom-sql")
+            .AddNpgSql(configuration.GetConnectionString("Database")!)
+            .AddRedis(configuration.GetConnectionString("Cache")!)
+            .AddUrlGroup(new Uri(configuration["KeyCloak:BaseUrl"]!), HttpMethod.Get, "keycloak");
     }
 }
