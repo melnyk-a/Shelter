@@ -1,6 +1,8 @@
+using Asp.Versioning;
 using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Serilog;
+using Shelter.Api.Controllers.Bookings;
 using Shelter.Api.Extensions;
 using Shelter.Api.OpenApi;
 using Shelter.Application;
@@ -62,6 +64,17 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+
+var apiVersionSet = app.NewApiVersionSet()
+    .HasApiVersion(new ApiVersion(1))
+    .ReportApiVersions()
+    .Build();
+
+var routeGroupBuilder = app.MapGroup("api/v{version:apiVersion}")
+    .WithApiVersionSet(apiVersionSet);
+
+routeGroupBuilder.MapBookingEndpoints();
+
 
 app.MapHealthChecks("health", new HealthCheckOptions
 {
