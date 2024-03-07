@@ -30,9 +30,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Directory.Packages.props = Directory.Packages.props
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shelter.Persistence", "src\Shelter.Persistence\Shelter.Persistence.csproj", "{ED056A4F-D42E-4EEF-8B62-034F6590C632}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shelter.Persistence", "src\Shelter.Persistence\Shelter.Persistence.csproj", "{ED056A4F-D42E-4EEF-8B62-034F6590C632}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shelter.Auth.Keycloak", "src\Shelter.Auth.Keycloak\Shelter.Auth.Keycloak.csproj", "{813FC4E1-1B00-4091-8FC9-90CA17D2A554}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shelter.Auth.Keycloak", "src\Shelter.Auth.Keycloak\Shelter.Auth.Keycloak.csproj", "{813FC4E1-1B00-4091-8FC9-90CA17D2A554}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shelter.BackgroundJobs", "src\Shelter.BackgroundJobs\Shelter.BackgroundJobs.csproj", "{CB555803-F0EE-45F1-91CC-062BBC19C6AE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -68,6 +70,10 @@ Global
 		{813FC4E1-1B00-4091-8FC9-90CA17D2A554}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{813FC4E1-1B00-4091-8FC9-90CA17D2A554}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{813FC4E1-1B00-4091-8FC9-90CA17D2A554}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CB555803-F0EE-45F1-91CC-062BBC19C6AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CB555803-F0EE-45F1-91CC-062BBC19C6AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CB555803-F0EE-45F1-91CC-062BBC19C6AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CB555803-F0EE-45F1-91CC-062BBC19C6AE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -83,6 +89,7 @@ Global
 		{BB776BDC-EEFA-41FA-9082-8B87D1FDBB07} = {A7126B04-9DD2-48B0-9832-5A71AC005C7E}
 		{ED056A4F-D42E-4EEF-8B62-034F6590C632} = {664525BC-8BDD-4B6C-9F2D-E69376CB9048}
 		{813FC4E1-1B00-4091-8FC9-90CA17D2A554} = {664525BC-8BDD-4B6C-9F2D-E69376CB9048}
+		{CB555803-F0EE-45F1-91CC-062BBC19C6AE} = {664525BC-8BDD-4B6C-9F2D-E69376CB9048}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E82B6CE5-A654-4798-96DB-89021A815238}

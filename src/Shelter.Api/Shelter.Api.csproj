@@ -25,6 +25,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Shelter.Application\Shelter.Application.csproj" />
     <ProjectReference Include="..\Shelter.Auth.Keycloak\Shelter.Auth.Keycloak.csproj" />
+    <ProjectReference Include="..\Shelter.BackgroundJobs\Shelter.BackgroundJobs.csproj" />
     <ProjectReference Include="..\Shelter.Infrastructure\Shelter.Infrastructure.csproj" />
     <ProjectReference Include="..\Shelter.Persistence\Shelter.Persistence.csproj" />
   </ItemGroup>

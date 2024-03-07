@@ -5,6 +5,7 @@ using Shelter.Api.Extensions;
 using Shelter.Api.OpenApi;
 using Shelter.Application;
 using Shelter.Auth.Keycloak;
+using Shelter.BackgroundJobs;
 using Shelter.Infrastructure;
 using Shelter.Persistence;
 
@@ -24,6 +25,7 @@ builder.Services.AddApplicationServices();
 builder.Services.AddPersistanceServices(builder.Configuration);
 builder.Services.AddInfrastructureServices(builder.Configuration);
 builder.Services.AddAuthKeycloackServices(builder.Configuration);
+builder.Services.AddBackgroundJobs(builder.Configuration);
 
 builder.Services.ConfigureOptions<ConfigureSwaggerOptions>();
 
