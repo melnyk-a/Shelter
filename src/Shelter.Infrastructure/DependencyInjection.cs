@@ -41,7 +41,7 @@ public static class DependencyInjection
     private static void AddHealthChecks(IServiceCollection services, IConfiguration configuration)
     {
         services.AddHealthChecks()
-            .AddCheck<CustomSqlHealthCheck>("custom-sql")
+            // .AddCheck<CustomSqlHealthCheck>("custom-sql")
             .AddNpgSql(configuration.GetConnectionString("Database")!)
             .AddRedis(configuration.GetConnectionString("Cache")!)
             .AddUrlGroup(new Uri(configuration["KeyCloak:BaseUrl"]!), HttpMethod.Get, "keycloak");
