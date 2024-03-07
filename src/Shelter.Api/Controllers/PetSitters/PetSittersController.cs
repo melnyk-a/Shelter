@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using Asp.Versioning;
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Shelter.Application.PetSitters.SearchPetSitters;
@@ -7,7 +8,8 @@ namespace Shelter.Api.Controllers.PetSitters;
 
 [Authorize]
 [ApiController]
-[Route("api/petsitters")]
+[ApiVersion(ApiVersions.V1)]
+[Route("api/v{version:apiVersion}/petsitters")]
 public class PetSittersController : ControllerBase
 {
     private readonly ISender _sender;
