@@ -3,12 +3,11 @@ using MediatR;
 using Shelter.Application.Abstractions.Messaging;
 using Shelter.Application.Exceptions;
 
-
 namespace Shelter.Application.Abstractions.Behaviors;
 
 public sealed class ValidationBehavior<TRequest, TResponse>
-: IPipelineBehavior<TRequest, TResponse>
-where TRequest : IBaseCommand
+    : IPipelineBehavior<TRequest, TResponse>
+    where TRequest : IBaseCommand
 {
     private readonly IEnumerable<IValidator<TRequest>> _validators;
 
@@ -22,7 +21,7 @@ where TRequest : IBaseCommand
         RequestHandlerDelegate<TResponse> next,
         CancellationToken cancellationToken)
     {
-        if (_validators.Any())
+        if (!_validators.Any())
         {
             return await next();
         }

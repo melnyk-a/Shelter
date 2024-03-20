@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Shelter.Domain.Users;
+using System.Diagnostics.Metrics;
 
 namespace Shelter.Persistence.Configurations;
 

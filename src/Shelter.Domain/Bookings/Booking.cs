@@ -16,8 +16,7 @@ public sealed class Booking : AuditableEntity
         Money securityDeposit,
         Money amenitiesUpCharge,
         Money totalPrice,
-        BookingStatus status,
-        DateTime createdOnUtc)
+        BookingStatus status)
         : base(id)
     {
         PetSitterId = petSitterId;
@@ -28,7 +27,6 @@ public sealed class Booking : AuditableEntity
         AmenitiesUpCharge = amenitiesUpCharge;
         TotalPrice = totalPrice;
         Status = status;
-        CreatedOnUtc = createdOnUtc;
     }
 
     private Booking() { }
@@ -42,7 +40,6 @@ public sealed class Booking : AuditableEntity
     public Money AmenitiesUpCharge { get; private set; }
     public Money TotalPrice { get; private set; }
     public BookingStatus Status { get; private set; }
-    public DateTime CreatedOnUtc { get; }
     public DateTime? ConfirmedOnUtc { get; private set; }
     public DateTime? RejectedOnUtc { get; private set; }
     public DateTime? CompletedOnUtc { get; private set; }
@@ -66,8 +63,7 @@ public sealed class Booking : AuditableEntity
             pricingDetails.SecurityDeposit,
             pricingDetails.AmenititiesUpCharge,
             pricingDetails.TotalPrice,
-            BookingStatus.Reserved,
-            utcNow);
+            BookingStatus.Reserved);
 
         booking.RaiseDomainEvent(new BookingReservedDomainEvent(booking.Id));
 

@@ -2,7 +2,7 @@
 
 namespace Shelter.Application.Reviews.CreateReview;
 
-public sealed class CreateReviewCommandValidator :
+internal  sealed class CreateReviewCommandValidator :
     AbstractValidator<CreateReviewCommand>
 {
     public CreateReviewCommandValidator()

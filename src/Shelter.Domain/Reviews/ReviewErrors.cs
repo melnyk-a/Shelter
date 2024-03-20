@@ -13,7 +13,7 @@ namespace Shelter.Domain.Reviews
             "Booking mismatch. You cannot leave a review without having made a booking");
 
         public static Error NotFound = new(
-            "Review.Found",
+            "Review.NotFound",
             "The review with the specified identifier was not found");
     }
 }

@@ -43,7 +43,7 @@ internal sealed class ReserveBookingCommandHandler : ICommandHandler<ReserveBook
             return Result.Failure<Guid>(UserErrors.NotFound);
         }
 
-        var petSitter = await _petSitterRepository.GetByIdAsync(request.UserId, cancellationToken);
+        var petSitter = await _petSitterRepository.GetByIdAsync(request.PetSitterId, cancellationToken);
 
         if (petSitter is null)
         {

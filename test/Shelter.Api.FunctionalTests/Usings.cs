@@ -1,0 +1,13 @@
+global using FluentAssertions;
+global using Microsoft.AspNetCore.Authentication.JwtBearer;
+global using Microsoft.AspNetCore.Hosting;
+global using Microsoft.AspNetCore.Mvc.Testing;
+global using Microsoft.AspNetCore.TestHost;
+global using Microsoft.EntityFrameworkCore;
+global using Microsoft.Extensions.Caching.StackExchangeRedis;
+global using Microsoft.Extensions.DependencyInjection.Extensions;
+global using Microsoft.Extensions.DependencyInjection;
+global using System.Net.Http.Headers;
+global using System.Net.Http.Json;
+global using System.Net;
+global using Xunit;

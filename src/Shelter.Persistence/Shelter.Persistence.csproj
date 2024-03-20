@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="EFCore.NamingConventions" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" />
     <PackageReference Include="Newtonsoft.Json" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" />
   </ItemGroup>
@@ -15,6 +16,11 @@
   <ItemGroup>
     <ProjectReference Include="..\Shelter.Application\Shelter.Application.csproj" />
     <ProjectReference Include="..\Shelter.BackgroundJobs\Shelter.BackgroundJobs.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="Shelter.Application.IntegrationTests"/>
+    <InternalsVisibleTo Include="Shelter.Api.FunctionalTests"/>
   </ItemGroup>
 
 </Project>

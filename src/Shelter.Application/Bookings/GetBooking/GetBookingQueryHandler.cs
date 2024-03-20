@@ -26,7 +26,7 @@ internal sealed class GetBookingQueryHandler : IQueryHandler<GetBookingQuery, Bo
         const string sql = """
             SELECT
                 id AS Id,
-                petSitter_id AS PetSitterId,
+                pet_sitter_id AS PetSitterId,
                 user_id AS UserId,
                 status AS Status,
                 price_for_period_amount AS PriceAmount,
@@ -39,7 +39,7 @@ internal sealed class GetBookingQueryHandler : IQueryHandler<GetBookingQuery, Bo
                 total_price_currency AS TotalPriceCurrency,
                 duration_start AS DurationStart,
                 duration_end AS DurationEnd,
-                created_on_utc AS CreatedOnUtc
+                created_date AS CreatedOnUtc
             FROM bookings
             WHERE id = @BookingId
             """;

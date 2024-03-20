@@ -42,10 +42,10 @@ public sealed class PricingService
                 priceForPeriod.Amount * percentageUpCharge, currency);
         }
 
-        var totalPrice = Money.Zero();
+        var totalPrice = Money.Zero(currency);
         totalPrice += priceForPeriod;
 
-        if (petSitter.SecurityDeposit.IsZero())
+        if (!petSitter.SecurityDeposit.IsZero())
         {
             totalPrice += petSitter.SecurityDeposit;
         }
